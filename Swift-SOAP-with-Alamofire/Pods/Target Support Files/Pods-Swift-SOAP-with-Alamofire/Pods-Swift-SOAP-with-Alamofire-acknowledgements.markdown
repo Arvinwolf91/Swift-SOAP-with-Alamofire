@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## AEXML
 
-Copyright (c) 2014 Marko Tadić <tadija@me.com> http://tadija.net
+Copyright (c) 2014-2017 Marko Tadić <tadija@me.com> http://tadija.net
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
 ## Alamofire
 
-Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
