@@ -8,18 +8,14 @@
 
 import UIKit
 
-struct Country {
-    var name:String = ""
-}
-
 class TableViewController: UITableViewController {
 
     var countryList = [Country]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIService.getCountries { (result) in
-            self.countryList = result
+        APIService.getCountries { (countries) in
+            self.countryList = countries
             self.tableView.reloadData()
         }
     }

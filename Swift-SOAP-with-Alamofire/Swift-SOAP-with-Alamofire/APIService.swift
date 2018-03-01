@@ -12,11 +12,15 @@ import SWXMLHash
 import StringExtensionHTML
 import AEXML
 
+struct Country {
+    var name:String = ""
+}
+
 class APIService {
     
     class func getCountries(completion: @escaping (_ result: [Country]) -> Void) -> Void {
         
-        var result = [Country]()
+        var countries = [Country]()
         let soapRequest = AEXMLDocument()
         let envelopeAttributes = ["xmlns:SOAP-ENV" : "http://schemas.xmlsoap.org/soap/envelope/",
                                   "xmlns:ns1" : "http://www.webserviceX.NET"]
@@ -25,9 +29,9 @@ class APIService {
         body.addChild(name: "ns1:GetCountries")
         
         let soapLength = String(soapRequest.xml.count)
-        let theURL = URL(string:  "http://www.webservicex.net/country.asmx")
+        let requestURL = URL(string:  "http://www.webservicex.net/country.asmx")
         
-        var mutableR = URLRequest(url:  theURL!)
+        var mutableR = URLRequest(url:  requestURL!)
         mutableR.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         mutableR.addValue("text/html; charset=utf-8", forHTTPHeaderField: "Content-Type")
         mutableR.addValue(soapLength, forHTTPHeaderField: "Content-Length")
@@ -44,17 +48,16 @@ class APIService {
                         let xmlInner = SWXMLHash.parse(getCountriesResult.stringByDecodingHTMLEntities)
                         for element in xmlInner["NewDataSet"]["Table"].all {
                             if let nameElement = element["Name"].element {
-                                var countryStruct = Country()
-                                countryStruct.name = nameElement.text
-                                result.append(countryStruct)
+                                var country = Country()
+                                country.name = nameElement.text
+                                countries.append(country)
                             }
                         }
                     }
-                    completion(result)
+                    completion(countries)
                 }else{
                     print("error fetching XML")
                 }
         }
     }
-
 }
